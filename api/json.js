@@ -14,6 +14,16 @@ exports.readFileSync = (dataPath) => {
       writeFileSync(dataPath, []);
       return readFileSync(dataPath);
     }
-    
+
     return JSON.parse(jsonData);
-  };
+};
+
+const writeFileSync = (dataPath, data) => {
+    fs.writeFileSync(dataPath, JSON.stringify(data, null, 2), "utf8", (err) => {
+      if (err) {
+        throw err;
+      }
+    });
+};
+
+exports.writeFileSync = writeFileSync;
